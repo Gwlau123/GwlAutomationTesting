@@ -2,7 +2,7 @@ package comments;
 
 /**
  * This class is created to demonstrate how to use the java comments 
- * @author Shailendra
+ * @author Nancy
  * */
 public class JavaComments {
 
@@ -49,7 +49,7 @@ public class JavaComments {
 	 * </tbody>
 	 * </table>
 	 * 
-	 * @author Shailendra
+	 * @author Nancy
 	 * @param data String
 	 * @return String This method will return Hello + given data
 	 * */
