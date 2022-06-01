@@ -1,19 +1,29 @@
 # Automation Training
 
-This document is a demo of a typical readme.md file
+# IMPORTANT-> Members who are committing on github, please make sure you do this step
 
-## Machine Setup
+Please set your eclipse username and email to your git account, by following below steps
+1. Goto Window > Preferences
+1. Goto Team > Git > Configuration
+1. Click on Add Entry
+1. Key : user.name
+1. Value : YOUR_GITHUB_USERNAME
+1. Click on Add
+1. Click again on Add Entry
+1. Key : user.email
+1. Value : YOUR_GITHUB_EMAIL
+1. Click on Add
+1. Restart the eclipse
 
-You must have Java JDK installed on your machine and path should also be set.
 
-Run below command on CMD to check the path is set to java home or not.
 
+## Readme.md examples
+
+###### Source Code
 
 ```bash
 echo %PATH%
 ```
-
-## More examples
 
 ###### Emphasis
 *This text will be italic*
