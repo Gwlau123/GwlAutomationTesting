@@ -18,7 +18,7 @@ public class Datatype {
 	    System.out.println(myFloatNum);
 	    System.out.println(myLetter);
 	    System.out.println(myBool);
-	    System.out.println(myText);
+	    System.out.println(myText);     
 		
 		
 
