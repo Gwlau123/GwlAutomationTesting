@@ -1,0 +1,26 @@
+Hello Team,
+I had forgot to tell you about the GIT token in the demo
+For this, I am sharing the step by which you can generate your token
+
+a token will be your password when you want to commit code from eclipse to git.
+
+Step for Creating a token
+1. In the upper-right corner of any page, click your profile photo, then click Settings.
+2. In the left sidebar, click  Developer settings.
+3. In the left sidebar, click Personal access tokens.
+4. Personal access tokens
+5. Click Generate new token.
+6. Generate a new token button
+7. Give your token a descriptive name.
+8. Token description field (required field)
+9. To give your token an expiration, select the Expiration drop-down menu, then click a default or use the calendar picker.
+10. Select the scope,  you'd like to grant this token. select repo.
+11. Finally Click Generate token.
+
+Copy this generated token in notepad or anywhere
+When you will commit you code to GIT
+eclipse will ask credential for the same
+
+so, you need to enter your User name here and Instead of password enter your generated TOKEN
+
+and select the Secure Checked box, if you checked this checked box, Eclipse will not ask about the credentials from the next time
