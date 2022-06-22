@@ -29,12 +29,21 @@ public class forLoop {
 
 		System.out.println("\nLoop4");
 		
-		for(int i=0 ; i<5 ; i++) {
-			System.out.println();
-			for(int j=0 ; j<5 ; j++) {
-				if(j<=i)
+		for(int i=0 ; i<=5 ; i++) {
+			for(int j=0 ; j<=5 ; j++) {
+				if(j<i)
 					System.out.print("["+i+","+j+"]\t");
+				else if(j==i)
+					System.out.print("["+i+","+j+"]\n");
 			}
 		}
+
+		System.out.println("\nLoop5");
+		
+		for(int i=0 , j=0 ; ( i<5 && j<5 ) ; i++ , j++ , System.out.println("Block code end\n")) {
+			if(j==i)
+				System.out.println("["+i+","+j+"]");
+		}
+		
 	}
 }
