@@ -1,4 +1,4 @@
-package java_Loop_Statements;
+package javaLoopsAndStatements;
 
 public class forEachLoop {
 
@@ -27,7 +27,7 @@ public class forEachLoop {
 		}
 
 		System.out.println("\nObject Loop:");
-		
+
 		for(Object obj:arr4) {
 			System.out.println(obj);
 		}

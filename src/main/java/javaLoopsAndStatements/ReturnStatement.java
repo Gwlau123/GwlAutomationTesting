@@ -1,4 +1,4 @@
-package java_Loop_Statements;
+package javaLoopsAndStatements;
 
 public class ReturnStatement {
 
