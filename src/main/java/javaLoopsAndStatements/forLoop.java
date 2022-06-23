@@ -35,15 +35,15 @@ public class forLoop {
 			System.out.println("Block code running");
 		}
 
-
 		System.out.println("\nLoop5");
 		
 		for(i=0 ; i<=4 ; i++) {
 			for(j=0 ; j<=4 ; j++) {
 				if(j<i)
 					System.out.print("["+i+","+j+"]\t");
-				else if(j==i)
+				else if(j==i) {
 					System.out.print("["+i+","+j+"]\n");
+				}
 			}
 		}
 
