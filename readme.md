@@ -4,7 +4,7 @@
 
 Please set your eclipse username and email to your git account, by following below steps
 1. Goto Window > Preferences
-1. Goto Team > Git > Configuration
+1. Goto version control > Git > Configuration
 1. Click on Add Entry
 1. Key : user.name
 1. Value : YOUR_GITHUB_USERNAME
