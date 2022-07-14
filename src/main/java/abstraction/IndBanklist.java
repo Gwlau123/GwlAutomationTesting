@@ -22,11 +22,12 @@ public class IndBanklist extends IndianBanks {
 	
 	public static void main(String[] args) {
 		
-		IndBanklist indbl = new IndBanklist();
+		IndianBanks indbl = new IndBanklist();
 		
 		indbl.sbiBank();
 		indbl.boiBank();
 		indbl.bobBank();
+		indbl.njgBank();
 	}
 
 }

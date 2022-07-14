@@ -1,6 +1,6 @@
 package abstraction;
 
-public class AllBanks implements ReserveBank, AccountType {
+public class CustomerInfo implements AccountHolder {
 
 	@Override
 	public void saving() {
@@ -26,13 +26,19 @@ public class AllBanks implements ReserveBank, AccountType {
 		
 	}
 
+	@Override
+	public void CustA() {
+		System.out.println("Mr John Deago is saving account holder in SBI bank.");
+		
+	}
+	
 	public static void main(String[] args) {
-		AllBanks ab = new AllBanks();
-		ab.saving();
-		ab.current();
-		ab.joint();
-		ab.rbiBank();
-	
-}
-	
+		CustomerInfo ci = new CustomerInfo();
+		ci.saving();
+		ci.current();
+		ci.joint();
+		ci.rbiBank();
+		ci.CustA();
+	}
+
 }

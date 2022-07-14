@@ -4,19 +4,19 @@ public class AccountInfo implements AccountType {
 	
 	@Override
 	public void saving() {
-		System.out.println("Customer can opend saving account");
+		System.out.println("Customer can open saving account");
 		
 	}
 
 	@Override
 	public void current() {
-		System.out.println("Customer can opend current account");
+		System.out.println("Customer can open current account");
 		
 	}
 
 	@Override
 	public void joint() {
-		System.out.println("Customer can opend joint account");
+		System.out.println("Customer can open joint account");
 		
 	}
 

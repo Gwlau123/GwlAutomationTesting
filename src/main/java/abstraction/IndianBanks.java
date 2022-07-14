@@ -14,9 +14,9 @@ public abstract class IndianBanks {
 		public abstract void bobBank();
 		
 		
-		public static void main(String[] args) {
+		/*public static void main(String[] args) {
 			
 			//IndianBanks ib= new IndianBanks();
-		}
+		} */
 		
 }
