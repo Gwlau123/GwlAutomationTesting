@@ -8,7 +8,7 @@ import java.util.TreeSet;
 public class SetExample {
 
 	public void hashSet() {
-		Set s =new HashSet<>();
+		Set s =new HashSet<Object>();
 		s.add(10);
 		s.add(20);
 		s.add(10);
@@ -17,7 +17,7 @@ public class SetExample {
 		System.out.println(" \n Hash Set --\n " +s);	
 	}
 	public void linkedhashSet() {
-		Set s =new LinkedHashSet<>();
+		Set s =new LinkedHashSet<Object>();
 		s.add(10);
 		s.add(20);
 		s.add(10);
@@ -26,7 +26,7 @@ public class SetExample {
 		System.out.println(" \n Linkedhash Set --\n " +s);	
 	}
 	public void treeSet() {
-		Set s =new TreeSet<>();
+		Set s =new TreeSet<Object>();
 		s.add("Sachin");
 		s.add("Ajay");
 		s.add("Virat");

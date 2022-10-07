@@ -1,4 +1,4 @@
-package problemSolving.A_SilverBloom;
+package problemSolving.A_SilverBloom.streams;
 
 public class Runner {
 	public static void main(String[] args) {
@@ -6,10 +6,10 @@ public class Runner {
 		Hostel h = new Hostel();
 
 		h.createRoom(1);
-		h.createRoom(2);
+		h.createRoom(1);
 
 		h.allocateRoom("Shailendra1", 1);
-		h.allocateRoom("Shailendra2", 1);
+		h.allocateRoom("Shailendra1", 1);
 		h.allocateRoom("Shailendra3", -2);
 		h.allocateRoom("Shailendra4", 2);
 

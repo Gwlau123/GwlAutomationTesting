@@ -1,4 +1,4 @@
-package problemSolving.A_SilverBloom;
+package problemSolving.A_SilverBloom.streams;
 
 import java.util.ArrayList;
 import java.util.List;

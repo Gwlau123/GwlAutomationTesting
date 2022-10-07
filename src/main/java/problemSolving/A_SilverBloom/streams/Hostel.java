@@ -1,7 +1,10 @@
-package problemSolving.A_SilverBloom;
+package problemSolving.A_SilverBloom.streams;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Hostel {
 
@@ -17,12 +20,20 @@ public class Hostel {
 		}
 		
 		// Validation for duplicate room num check
+		boolean flag = rooms.stream().anyMatch(r->r.getRoomNumber()==roomNum);
+		if (flag) {
+			System.out.println("Room number "+roomNum+" already exist!");
+			return;
+		}
+		
+		/*
 		for (Room room : rooms) {
 			if(room.getRoomNumber()==roomNum) {
 				System.out.println("Room number "+roomNum+" already exist!");
 				return;
 			}
 		}
+		*/
 		
 		// valid code
 		Room r = new Room();
@@ -34,12 +45,20 @@ public class Hostel {
 		
 		// Validation for null/blank check
 		if (studName == null || "".equals(studName.trim())) {
-			System.out
-			.println("Invalid student name [" + studName + "]");
+			System.out.println("Invalid student name [" + studName + "]");
 			return;
 		}
 		
 		// Validation for duplicate check
+		
+		boolean flag = rooms.stream().anyMatch(r->r.getStudentList().stream().anyMatch(s->s.getName().equals(studName)));
+		if (flag) {
+			System.out
+			.println("Duplicate student [" + studName + "]");
+			return;
+		}
+		
+		/*
 		for (Room room : rooms) {
 			for (Student s : room.getStudentList()) {
 				if(s.getName().equals(studName)) {
@@ -49,6 +68,7 @@ public class Hostel {
 				}
 			}
 		}
+		*/
 		
 		// valid code
 		Student s = new Student();
@@ -68,24 +88,38 @@ public class Hostel {
 	}
 
 	private Room getFirstAvailableRoom() {
+		// Using Stream
+		return rooms.stream().filter(r->r.getCurrentOccupancy()<MAX_STUD_IN_ROOM).findFirst().orElse(null);
+
+		/*
 		for (Room room : rooms) {
 			if (room.getCurrentOccupancy() < MAX_STUD_IN_ROOM) {
 				return room;
 			}
 		}
-		return null;
+		*/
 	}
 
 	private Room getRoomByRoomNumber(int preferredRoomNumber) {
+		// Using Stream
+		return rooms.stream().filter(r->r.getRoomNumber()==preferredRoomNumber && r.getCurrentOccupancy() < MAX_STUD_IN_ROOM).findFirst().orElse(null);
+
+		/*
 		for (Room room : rooms) {
 			if (room.getRoomNumber() == preferredRoomNumber && room.getCurrentOccupancy() < MAX_STUD_IN_ROOM) {
 				return room;
 			}
 		}
 		return null;
+		*/
 	}
 
 	public void de_allocateRoom(String studName) {
+		
+		// Using Stream
+		rooms.stream().forEach(r -> r.getStudentList().stream().forEach(s -> s.getName().equals(studName)));
+		
+		
 		boolean flag = true;
 		for (Room room : rooms) {
 			for (Student s : room.getStudentList()) {
