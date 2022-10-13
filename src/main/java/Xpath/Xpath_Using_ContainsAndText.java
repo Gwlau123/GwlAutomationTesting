@@ -21,12 +21,10 @@ public class Xpath_Using_ContainsAndText {
 	    driver.findElement(By.xpath("//input[@name='email']")).sendKeys("storeowner@yopmail.com");
 	    driver.findElement(By.xpath("//input[@name='password']")).sendKeys("Amplify@123");
 	    
-	  //syntax for text() : //htmltag[text()='value of text']
-	    driver.findElement(By.xpath("//input[text() ='Appointments']")).click();
-	    
-	    //synatx for contains : //htmltag[contains text(), 'value of text')]
-	    
-	// or  //htmltag[contains(@attribute, 'value')]
+	  /*syntax for text() : //htmltag[text()='value of text']
+	 synatx for contains : //htmltag[contains text(), 'value of text')]
+	 or  //htmltag[contains(@attribute, 'value')]
+	 */
 		}
 
 }
