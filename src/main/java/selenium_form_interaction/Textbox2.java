@@ -4,12 +4,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 public class Textbox2 {				
     public static void main(String[] args) throws InterruptedException {									
     		
     	// declaration and instantiation of objects/variables		
-    	System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");					
-        WebDriver driver = new ChromeDriver();					
+    	//System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");					
+    	WebDriverManager.chromedriver().setup();
+    	WebDriver driver = new ChromeDriver();					
         		
         String baseUrl = "http://demo.guru99.com/test/login.html";					
         driver.get(baseUrl);					

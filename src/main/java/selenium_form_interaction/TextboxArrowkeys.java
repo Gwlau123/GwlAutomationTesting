@@ -1,5 +1,8 @@
 package selenium_form_interaction;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,8 +11,9 @@ public class TextboxArrowkeys {
     public static void main(String[] args) throws InterruptedException									
     {	
     	// declaration and instantiation of objects/variables		
-    	System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");					
-        WebDriver driver = new ChromeDriver();					
+    	//System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");					
+    	WebDriverManager.chromedriver().setup();
+    	WebDriver driver = new ChromeDriver();					
         		
         String baseUrl = "https://finmasters.com/money-counter/";					
         driver.get(baseUrl);

@@ -26,7 +26,7 @@ public class RadioButton1 {
         System.out.println("Female RadioButton is selected"); 
         Thread.sleep(3000);
       
-        // dselect RadioButton
+        // deselect RadioButton
         WebElement RBM = driver.findElement(By.xpath("//Input[@name='radiooptions' and @value = 'Male']"));
         RBM.click(); 
         System.out.println("Male RadioButton is selected"); 

@@ -1,5 +1,8 @@
 package selenium_form_interaction;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.*;		
 
 public class Textarea1 {
@@ -7,8 +10,9 @@ public class Textarea1 {
     public static void main(String[] args) throws InterruptedException {									
     		
     	// declaration and instantiation of objects/variables		
-    	System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");					
-        WebDriver driver = new ChromeDriver();					
+    	//System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");					
+    	WebDriverManager.chromedriver().setup();
+    	WebDriver driver = new ChromeDriver();					
         		
         String baseUrl = "file:///C:/Users/Administrator/Downloads/Result.html";					
         driver.get(baseUrl);					
