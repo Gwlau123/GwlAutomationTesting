@@ -14,10 +14,9 @@ public class CalendarDemo {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		CalendarDemo cd = new CalendarDemo();
-		cd.setUp();
+		CalendarDemo cd = new CalendarDemo();		cd.setUp();
 		cd.navigateToSite();
-		cd.selectDate(25, 1, 2023);
+		cd.selectDate(12,1,2024);
 		cd.tearDown();
 
 	}
@@ -47,10 +46,17 @@ public class CalendarDemo {
 	 * 
 	 */
 	public void selectDate(int dd, int mm, int yy) throws InterruptedException {
-		driver.findElement(By.xpath("//span[.='DEPARTURE']")).click();
-		Thread.sleep(2000);
 		
 		LocalDate date = LocalDate.now();
+		
+		if (dd < 1 || dd > 31 || mm < 1 || mm > 12 || yy < date.getYear() || mm > (date.getYear()+1)) {
+			System.out.println("Invalid date "+dd+"/"+mm+"/"+yy);
+			return;
+		}
+		
+		driver.findElement(By.xpath("//span[.='DEPARTURE']")).click();
+		
+		Thread.sleep(2000);
 
 		System.out.println(date);
 
@@ -64,6 +70,10 @@ public class CalendarDemo {
 		int yearDiff = yy - date.getYear();
 		if (yearDiff > 0) {
 			// run the loop to select the desired year
+			int loopCounter = (12-date.getMonthValue())*yearDiff;
+			for (int i = 0; i < loopCounter; i++) {
+				driver.findElement(By.xpath("//span[@aria-label='Next Month']")).click();
+			}
 		}
 
 		// MONTH SELECTION
@@ -76,13 +86,12 @@ public class CalendarDemo {
 			}
 		}
 
-		leftMonthGrid = driver.findElement(By.xpath("(//div[@role='heading'])[1]")).getText();
 		// div[contains(@aria-label,'Jan 23 2023')]
-		String selectDate = leftMonthGrid.substring(0, 3) + " " + dd + " " + yy;
+		String selectDate = getMonth(mm).substring(0, 3) + " " + dd + " " + yy;
 
 		System.out.println(selectDate);
 		driver.findElement(By.xpath("//div[contains(@aria-label,'"+selectDate+"')]")).click();
-
+		Thread.sleep(2000);
 	}
 
 	private int getMonth(String mm) {
@@ -112,6 +121,37 @@ public class CalendarDemo {
 			return 12;
 		}
 		return -1;
+	}
+	
+	private String getMonth(int mm) {
+		switch (mm) {
+		case 1:
+			return "January";
+		case 2:
+			return "February";
+		case 3:
+			return "March";
+		case 4:
+			return "April";
+		case 5:
+			return "May";
+		case 6:
+			return "June";
+		case 7:
+			return "July";
+		case 8:
+			return "August";
+		case 9:
+			return "September";
+		case 10:
+			return "October";
+		case 11:
+			return "November";
+		case 12:
+			return "December";
+		default:
+			return "Invalid month";
+		}
 	}
 
 }
