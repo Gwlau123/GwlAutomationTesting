@@ -11,8 +11,13 @@ public class Textarea1 {
     		
     	// declaration and instantiation of objects/variables		
     	//System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");					
+    	//WebDriverManager.chromedriver().setup();
+    	//WebDriver driver = new ChromeDriver();	
+
     	WebDriverManager.chromedriver().setup();
-    	WebDriver driver = new ChromeDriver();					
+		WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        Thread.sleep(3000);
         		
         String baseUrl = "file:///C:/Users/Administrator/Downloads/Result.html";					
         driver.get(baseUrl);					
