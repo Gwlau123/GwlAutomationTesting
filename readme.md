@@ -5,6 +5,7 @@
 - See below "Training Plan" for topics and subtopics, there you will find date wise session topics.
 - See below "Training Session Video link(drive folder)" for the drive-link, there you will find the session videos.
 - You can start watching the videos and start following the codes examples explained in video.
+- You will find the xpath & css session data in this file only.
 - Also all codes are uploaded in this github repo
 
 ## Training Session Video link(drive folder)
