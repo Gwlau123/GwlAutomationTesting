@@ -1,6 +1,7 @@
 package mmt.calendarDemo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,16 +10,28 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CalendarDemo {
-	
-	static WebDriver driver ;
+
+	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException {
-
-		CalendarDemo cd = new CalendarDemo();		cd.setUp();
+		test1();
+		test2();
+	}
+	
+	private static void test1() throws InterruptedException {
+		CalendarDemo cd = new CalendarDemo();
+		cd.setUp();
 		cd.navigateToSite();
-		cd.selectDate(12,1,2024);
+		cd.selectDate(20, 1, 2024);
 		cd.tearDown();
+	}
 
+	private static void test2() throws InterruptedException {
+		CalendarDemo cd = new CalendarDemo();
+		cd.setUp();
+		cd.navigateToSite();
+		cd.selectDate(20, 12, 2023);
+		cd.tearDown();
 	}
 
 	public void setUp() {
@@ -42,20 +55,22 @@ public class CalendarDemo {
 	 * @param dd   = 27
 	 * @param mm   = 12
 	 * @param year = 2023
-	 * @throws InterruptedException 
+	 * @throws InterruptedException
 	 * 
 	 */
 	public void selectDate(int dd, int mm, int yy) throws InterruptedException {
-		
+
+		// December 2023
+
 		LocalDate date = LocalDate.now();
-		
-		if (dd < 1 || dd > 31 || mm < 1 || mm > 12 || yy < date.getYear() || mm > (date.getYear()+1)) {
-			System.out.println("Invalid date "+dd+"/"+mm+"/"+yy);
+
+		if (dd < 1 || dd > 31 || mm < 1 || mm > 12 || yy < date.getYear() || mm > (date.getYear() + 1)) {
+			System.out.println("Invalid date " + dd + "/" + mm + "/" + yy);
 			return;
 		}
-		
+
 		driver.findElement(By.xpath("//span[.='DEPARTURE']")).click();
-		
+
 		Thread.sleep(2000);
 
 		System.out.println(date);
@@ -70,7 +85,7 @@ public class CalendarDemo {
 		int yearDiff = yy - date.getYear();
 		if (yearDiff > 0) {
 			// run the loop to select the desired year
-			int loopCounter = (12-date.getMonthValue())*yearDiff;
+			int loopCounter = (12 - date.getMonthValue()) * yearDiff;
 			for (int i = 0; i < loopCounter; i++) {
 				driver.findElement(By.xpath("//span[@aria-label='Next Month']")).click();
 			}
@@ -78,80 +93,33 @@ public class CalendarDemo {
 
 		// MONTH SELECTION
 		String leftMonthGrid = driver.findElement(By.xpath("(//div[@role='heading'])[1]")).getText();
-		int monthDiff = mm - getMonth(leftMonthGrid);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+		LocalDate localDate = LocalDate.parse("1 "+leftMonthGrid, formatter);
+		System.out.println(localDate);
+		
+		int monthDiff = mm - localDate.getMonthValue();
 		if (monthDiff > 0) {
-			// Click on next month icon till the desired month is selected in left month grid
+			// Click on next month icon till the desired month is selected in left month
+			// grid
 			for (int i = 0; i < monthDiff; i++) {
 				driver.findElement(By.xpath("//span[@aria-label='Next Month']")).click();
 			}
 		}
 
 		// div[contains(@aria-label,'Jan 23 2023')]
-		String selectDate = getMonth(mm).substring(0, 3) + " " + dd + " " + yy;
+		String datee = mm +"/"+dd+"/"+yy;
+		formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+		localDate = LocalDate.parse(datee, formatter);
+		System.out.println(localDate);
+		String month = localDate.getMonth().toString();
+		month = month.substring(0, 1)+month.substring(1, 3).toLowerCase();
+		System.out.println(month);
+		String selectDate = month + " " + dd + " " + yy;
 
 		System.out.println(selectDate);
-		driver.findElement(By.xpath("//div[contains(@aria-label,'"+selectDate+"')]")).click();
+		driver.findElement(By.xpath("//div[contains(@aria-label,'" + selectDate + "')]")).click();
 		Thread.sleep(2000);
-	}
-
-	private int getMonth(String mm) {
-		if (mm.toLowerCase().contains("january")) {
-			return 1;
-		} else if (mm.toLowerCase().contains("february")) {
-			return 2;
-		} else if (mm.toLowerCase().contains("march")) {
-			return 3;
-		} else if (mm.toLowerCase().contains("april")) {
-			return 4;
-		} else if (mm.toLowerCase().contains("may")) {
-			return 5;
-		} else if (mm.toLowerCase().contains("june")) {
-			return 6;
-		} else if (mm.toLowerCase().contains("july")) {
-			return 7;
-		} else if (mm.toLowerCase().contains("August")) {
-			return 8;
-		} else if (mm.toLowerCase().contains("september")) {
-			return 9;
-		} else if (mm.toLowerCase().contains("october")) {
-			return 10;
-		} else if (mm.toLowerCase().contains("november")) {
-			return 11;
-		} else if (mm.toLowerCase().contains("december")) {
-			return 12;
-		}
-		return -1;
-	}
-	
-	private String getMonth(int mm) {
-		switch (mm) {
-		case 1:
-			return "January";
-		case 2:
-			return "February";
-		case 3:
-			return "March";
-		case 4:
-			return "April";
-		case 5:
-			return "May";
-		case 6:
-			return "June";
-		case 7:
-			return "July";
-		case 8:
-			return "August";
-		case 9:
-			return "September";
-		case 10:
-			return "October";
-		case 11:
-			return "November";
-		case 12:
-			return "December";
-		default:
-			return "Invalid month";
-		}
 	}
 
 }
